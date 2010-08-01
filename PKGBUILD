@@ -1,15 +1,15 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Maintainer: Laszlo Papp <djszapi2@gmail.com>
 pkgname=bitbake
-pkgver=1.8.12
-pkgrel=2
+pkgver=1.8.18
+pkgrel=vad1
 pkgdesc="A simple tool for task execution derived from Gentoo's portage"
 arch=('i686' 'x86_64')
 url="http://developer.berlios.de/projects/bitbake/"
 license=('GPL' 'custom:MIT')
 depends=('python')
 source=(http://download.berlios.de/bitbake/${pkgname}-${pkgver}.tar.gz)
-md5sums=('01f6404d96cfa1d165d07921d754271e')
+md5sums=('f772ca3121103ab3500c7f1609a96271')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
