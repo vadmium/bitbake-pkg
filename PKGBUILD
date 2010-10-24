@@ -8,7 +8,7 @@ pkgdesc="A simple tool for task execution derived from Gentoo's portage"
 arch=('i686' 'x86_64')
 url="http://developer.berlios.de/projects/bitbake/"
 license=('GPL' 'custom:MIT')
-depends=('python')
+depends=('python' 'setuptools')
 source=(http://download.berlios.de/bitbake/${pkgname}-${pkgver}.tar.gz)
 md5sums=('be3b330255e9d863ef5f018a1f6c7086')
 
