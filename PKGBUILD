@@ -14,7 +14,7 @@ md5sums=('be3b330255e9d863ef5f018a1f6c7086')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  python setup.py install --root=${pkgdir} || return 1
+  python2 setup.py install --root=${pkgdir} || return 1
 
   # Install vim extensions
   install -D -m644 ${srcdir}/${pkgname}-${pkgver}/contrib/vim/ftdetect/bitbake.vim \
