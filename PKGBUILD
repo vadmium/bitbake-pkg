@@ -2,18 +2,25 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Maintainer: Laszlo Papp <djszapi2@gmail.com>
 pkgname=bitbake
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.10.1
+pkgrel=1
 pkgdesc="A simple tool for task execution derived from Gentoo's portage"
 arch=('any')
 url="http://developer.berlios.de/projects/bitbake/"
 license=('GPL' 'custom:MIT')
 depends=('python2' 'setuptools')
-source=(http://download.berlios.de/bitbake/${pkgname}-${pkgver}.tar.gz)
-md5sums=('be3b330255e9d863ef5f018a1f6c7086')
+source=(
+  http://download.berlios.de/bitbake/${pkgname}-${pkgver}.tar.gz
+  cooker-unbound.diff
+)
+md5sums=(
+  '3cb6f8483ea975a12a91a1894ed7a6e9'
+  'edd4574b781c958fd73d5e7b010a5b3e'
+)
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
+  patch -p 1 < ../cooker-unbound.diff
   python2 setup.py install --root=${pkgdir} || return 1
 
   # Install vim extensions

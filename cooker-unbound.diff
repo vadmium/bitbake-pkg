@@ -1,0 +1,16 @@
+cooker: fix UnboundLocalError
+diff --git a/lib/bb/cooker.py b/lib/bb/cooker.py
+index 3b27a64..7cde055 100644
+--- a/lib/bb/cooker.py
++++ b/lib/bb/cooker.py
+@@ -981,9 +981,9 @@ class CookerParser:
+         self.pointer = 0
+ 
+     def parse_next(self):
++        cooker = self.cooker
+         if self.pointer < len(self.filelist):
+             f = self.filelist[self.pointer]
+-            cooker = self.cooker
+ 
+             try:
+                 fromCache, skipped, virtuals = cooker.bb_cache.loadData(f, cooker.configuration.data, cooker.status)
