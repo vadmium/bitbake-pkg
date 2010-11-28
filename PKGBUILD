@@ -3,12 +3,12 @@
 # Maintainer: Laszlo Papp <djszapi2@gmail.com>
 pkgname=bitbake
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple tool for task execution derived from Gentoo's portage"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://developer.berlios.de/projects/bitbake/"
 license=('GPL' 'custom:MIT')
-depends=('python' 'setuptools')
+depends=('python2' 'setuptools')
 source=(http://download.berlios.de/bitbake/${pkgname}-${pkgver}.tar.gz)
 md5sums=('be3b330255e9d863ef5f018a1f6c7086')
 
