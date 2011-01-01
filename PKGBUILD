@@ -2,36 +2,33 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Maintainer: Laszlo Papp <djszapi2@gmail.com>
 pkgname=bitbake
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="A simple tool for task execution derived from Gentoo's portage"
 arch=('any')
 url="http://developer.berlios.de/projects/bitbake/"
 license=('GPL' 'custom:MIT')
 depends=('python2' 'setuptools')
-source=(
-  http://download.berlios.de/bitbake/${pkgname}-${pkgver}.tar.gz
-  cooker-unbound.diff
-)
-md5sums=(
-  '3cb6f8483ea975a12a91a1894ed7a6e9'
-  'edd4574b781c958fd73d5e7b010a5b3e'
-)
+source=(http://download.berlios.de/bitbake/${pkgname}-${pkgver}.tar.gz)
+md5sums=('ec2e04991a0bb4956780d1974514c033')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  patch -p 1 < ../cooker-unbound.diff
-  python2 setup.py install --root=${pkgdir} || return 1
+  python2 setup.py install --root=${pkgdir}
+}
 
+package() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  
   # Install vim extensions
-  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/contrib/vim/ftdetect/bitbake.vim \
-  ${pkgdir}/usr/share/vim/ftplugin/bitbake.vim || return 1
-  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/contrib/vim/syntax/bitbake.vim \
-  ${pkgdir}/usr/share/vim/syntax/bitbake.vim || return 1
-  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/contrib/bbdev.sh \
-  ${pkgdir}/usr/share/bitbake/bbdev.sh || return 1
+  install -D -m644 contrib/vim/ftdetect/bitbake.vim \
+    ${pkgdir}/usr/share/vim/ftplugin/bitbake.vim
+  install -D -m644 contrib/vim/syntax/bitbake.vim \
+    ${pkgdir}/usr/share/vim/syntax/bitbake.vim
+  
+  install -D -m644 contrib/bbdev.sh ${pkgdir}/usr/share/bitbake/bbdev.sh
 
   # Handle MIT license
-  install -D -m644 ${srcdir}/${pkgname}-${pkgver}/doc/COPYING.MIT \
-  ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
+  install -D -m644 doc/COPYING.MIT \
+    ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
