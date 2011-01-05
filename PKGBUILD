@@ -21,10 +21,11 @@ package() {
   cd ${srcdir}/${pkgname}-${pkgver}
   
   # Install vim extensions
+  VIMRUNTIME="${pkgdir}/usr/share/vim/vimfiles"
   install -D -m644 contrib/vim/ftdetect/bitbake.vim \
-    ${pkgdir}/usr/share/vim/ftplugin/bitbake.vim
+    "${VIMRUNTIME}/ftdetect/bitbake.vim"
   install -D -m644 contrib/vim/syntax/bitbake.vim \
-    ${pkgdir}/usr/share/vim/syntax/bitbake.vim
+    "${VIMRUNTIME}/syntax/bitbake.vim"
   
   install -D -m644 contrib/bbdev.sh ${pkgdir}/usr/share/bitbake/bbdev.sh
 
