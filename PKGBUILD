@@ -15,11 +15,17 @@ depends=(python2 python2-ply python2-progressbar)
 
 makedepends=(python2 python2-ply)
 _rls="${pkgname}-${pkgver}"
-source=("http://mirrors.kernel.org/yocto/${pkgname}/${_rls}.tar.gz")
-md5sums=('d27ddc9c713f15874447248e4c8608f5')
+source=("http://mirrors.kernel.org/yocto/${pkgname}/${_rls}.tar.gz"
+  local-version.patch
+)
+md5sums=('d27ddc9c713f15874447248e4c8608f5'
+  '9c149aaf9813212fc32259e51dfe7fa8'
+)
 
 build() {
   cd "${srcdir}/${_rls}"
+  
+  patch -p 0 < ../local-version.patch
   
   # Build must be done separately to install because setup.py calls glob
   # ("doc/manual/html/*") which is only populated after the build.
