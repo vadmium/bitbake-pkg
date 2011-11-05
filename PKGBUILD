@@ -2,11 +2,11 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Maintainer: Laszlo Papp <djszapi2@gmail.com>
 pkgname=bitbake
-pkgver=1.12.0
-pkgrel=2
+pkgver=1.14.0
+pkgrel=1
 pkgdesc="A simple tool for task execution derived from Gentoo's portage"
 arch=('any')
-url="http://developer.berlios.de/projects/bitbake/"
+url="http://lists.linuxtogo.org/cgi-bin/mailman/listinfo/${pkgname}-devel"
 license=('GPL' 'custom:MIT')
 
 # "Python2-progressbar" is only required for the "knotty" UI, but is a
@@ -14,11 +14,12 @@ license=('GPL' 'custom:MIT')
 depends=(python2 python2-ply python2-progressbar)
 
 makedepends=(python2 python2-ply)
-source=(http://download.berlios.de/bitbake/${pkgname}-${pkgver}.tar.gz)
-md5sums=('53860ba2e38bb9e70ca7189c642605be')
+_rls="${pkgname}-${pkgver}"
+source=("http://mirrors.kernel.org/yocto/${pkgname}/${_rls}.tar.gz")
+md5sums=('d27ddc9c713f15874447248e4c8608f5')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${_rls}"
   
   # Build must be done separately to install because setup.py calls glob
   # ("doc/manual/html/*") which is only populated after the build.
@@ -26,7 +27,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${_rls}"
   
   # Skip build because we just did it and XMLLINT, XSLTPROC steps take ages
   python2 setup.py install --root=${pkgdir} --optimize=1 --skip-build
