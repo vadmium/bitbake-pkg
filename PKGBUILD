@@ -6,7 +6,7 @@ pkgver=1.14.0
 pkgrel=1
 pkgdesc="A simple tool for task execution derived from Gentoo's portage"
 arch=('any')
-url="http://lists.linuxtogo.org/cgi-bin/mailman/listinfo/${pkgname}-devel"
+url="http://git.openembedded.org/cgit.cgi/${pkgname}"
 license=('GPL' 'custom:MIT')
 
 # "Python2-progressbar" is only required for the "knotty" UI, but is a
