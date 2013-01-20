@@ -13,7 +13,7 @@ license=('GPL' 'custom:MIT')
 # mandatory dependency here because that is the default UI
 depends=(python2 python2-ply python2-progressbar)
 
-makedepends=(python2 python2-ply)
+makedepends=(python2 python2-ply docbook-xsl)
 _rls="${pkgname}-${pkgver}"
 source=("http://mirrors.kernel.org/yocto/${pkgname}/${_rls}.tar.gz"
   local-version.patch
